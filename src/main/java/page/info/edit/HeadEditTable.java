@@ -316,14 +316,14 @@ class HeadEditTable extends Page {
 				sta.timeLimit = val;
 		}
 		if (jtf == jlen) {
-			if (val > 8000)
-				val = 8000;
-			if (val < 2000)
-				val = 2000;
+			if (val > 99999)
+				val = 99999;
+			if (val < 0)
+				val = 0;
 			sta.len = val;
 		}
 		if (jtf == jmax) {
-			if (val <= 0 || val > 50)
+			if (val <= 0 || val > 999)
 				return;
 			sta.max = val;
 		}
