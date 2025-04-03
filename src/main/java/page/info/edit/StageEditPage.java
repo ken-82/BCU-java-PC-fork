@@ -163,12 +163,12 @@ public class StageEditPage extends Page {
 
 		if (headEdit == 0) {
 			set(hinf, x, y, 900, 50, 1400, 200);
-			set(linf, x, y, 900, 250, 1400, 100);
+			set(linf, x, y, 900, 250, 1400, 150);
 			set(sinf, x, y, 900, 50, 0, 0);
 		} else if (headEdit == 1) {
 			set(hinf, x, y, 900, 50, 0, 0);
 			set(linf, x, y, 900, 50, 0, 0);
-			set(sinf, x, y, 900, 50, 1400, 350);
+			set(sinf, x, y, 900, 50, 1400, 450);
 		}
 
 		set(addl, x, y, 900, subY + 100, 200, 50);

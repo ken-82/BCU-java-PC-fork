@@ -31,7 +31,7 @@ public class HeadTable extends AbJTable {
 		infs = Page.get(MainLocale.INFO, "ht0", 6);
 		limits = Page.get(MainLocale.INFO, "ht1", 7);
 		rarity = new String[] { "N", "EX", "R", "SR", "UR", "LR" };
-		climits = Page.get(MainLocale.INFO, "ht2", 2);
+		climits = Page.get(MainLocale.INFO, "ht2", 4);
 	}
 
 	private Object[][] data;
@@ -94,6 +94,8 @@ public class HeadTable extends AbJTable {
 			setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		else if (r == 3 && c == 7 && data[r][c] instanceof CharaGroup)
 			setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		else if (r == 2 && c == 7 && data[r][c] instanceof CharaGroup)
+			setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		else
 			setCursor(Cursor.getDefaultCursor());
 	}
@@ -118,6 +120,10 @@ public class HeadTable extends AbJTable {
 		if (r == 4 && c == 7 && data[r][c] instanceof LvRestrict)
 			MainFrame.changePanel(new LvRestrictPage(page, (LvRestrict) data[r][c]));
 		if (r == 3 && c == 7 && data[r][c] instanceof CharaGroup) // todo: fix so charagroup doesn't replace global cooldown
+			MainFrame.changePanel(new CharaGroupPage(page, (CharaGroup) data[r][c]));
+		if (r == 2 && c == 7 && data[r][c] instanceof CharaGroup) // todo: fix so charagroup doesn't replace cost
+			MainFrame.changePanel(new CharaGroupPage(page, (CharaGroup) data[r][c]));
+		if (r == 1 && c == 7 && data[r][c] instanceof CharaGroup) // todo: fix so charagroup doesn't replace Max spawn
 			MainFrame.changePanel(new CharaGroupPage(page, (CharaGroup) data[r][c]));
 	}
 
@@ -186,6 +192,14 @@ public class HeadTable extends AbJTable {
 				img[7] = MainBCU.seconds
 						? MainBCU.toSeconds(lim.stageLimit.globalCooldown) + "s"
 						: lim.stageLimit.globalCooldown + "f";
+			}
+			if (lim.stageLimit.globalCost > 0) {
+				rar[6] = climits[2];
+				rar[7] = lim.stageLimit.globalCost;
+			}
+			if (lim.stageLimit.maxUnitSpawn > 0) {
+				reg[6] = climits[3];
+				reg[7] = lim.stageLimit.maxUnitSpawn;
 			}
 		}
         if (lim.rare != 0) {
