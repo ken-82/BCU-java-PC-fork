@@ -345,7 +345,7 @@ public class BattleInfoPage extends KeyHandler implements OuterBox {
 
 		ecount.setText(sb.entityCount(1) + "/" + sb.st.max);
 		if(sb.maxspawn() > 0)
-			ucount.setText(sb.entityCount(-1) + "/" + sb.max_num + " (Unit left " + sb.left + ")");
+			ucount.setText(sb.entityCount(-1) + "/" + sb.max_num + " (Unit left " + sb.unitLeft + ")");
 		else
 			ucount.setText(sb.entityCount(-1) + "/" + sb.max_num);
 
